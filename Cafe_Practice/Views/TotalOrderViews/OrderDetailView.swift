@@ -1,0 +1,68 @@
+//
+//  OrderDetailView.swift
+//  Cafe_Practice
+//
+//  Created by 김창현 on 3/30/23.
+//
+
+import SwiftUI
+
+struct OrderDetailView: View {
+    
+//    @ObservedObject var orderDetailVM: CoffeeOrderViewModel
+    
+    var customerName: String
+    var boozerNumber: String
+    var customerOrder: [Order]
+    
+    var body: some View {
+        VStack {
+            Text("Total Order Views")
+            VStack {
+                Text("Customer: " + "\(customerName)")
+                Text("Boozer Number?: " + "\(boozerNumber)")
+                
+                ForEach(self.customerOrder, id: \.coffee) { order in
+                    VStack {
+                        Text("Coffee: " + order.coffee.rawValue)
+                        Text("How many?: " + "\(order.numberOfCoffee)")
+                        Text("iceHot: " + order.iceHot.rawValue)
+                        Text("whipcream: " + order.whipcream.rawValue)
+                        Text("notes: " + order.notes)
+                    }
+                }
+                
+            }
+            Spacer()
+//            ForEach(orderDetailVM.coffeeOrders, id:\.coffeeName) { order in
+//                VStack {
+//                    Text(order.coffeeName)
+//                    Text("Number of Coffees: \(order.numberOfCoffee)")
+//                    Text(order.iceHot.rawValue)
+//                    Text(order.whipcream)
+//                    Text(order.notes)
+//                }
+//            }
+        }
+    }
+}
+
+struct OrderDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        let order = Order(
+            coffee: .am,
+            numberOfCoffee: 1,
+            iceHot: .iced,
+            whipcream: .NoWhip,
+            notes: "Nothing"
+        )
+        return OrderDetailView(
+            customerName: "철수 어린이",
+            boozerNumber: "999",
+            customerOrder: [order]
+        )
+//        let viewModel = OrderDetailViewModel(order: order)
+//
+//        return OrderDetailView(orderDetailVM: viewModel)
+    }
+}
