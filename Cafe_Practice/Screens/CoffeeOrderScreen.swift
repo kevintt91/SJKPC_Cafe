@@ -17,6 +17,12 @@ struct CoffeeOrderScreen: View {
     @State private var numCoffee: Int = 0
     @State private var notes: String = ""
     
+    @ObservedObject private var coffeeOrderVM: CoffeeOrderViewModel
+    
+    init() {
+        self.coffeeOrderVM = CoffeeOrderViewModel()
+    }
+    
     var body: some View {
         NavigationView {
             

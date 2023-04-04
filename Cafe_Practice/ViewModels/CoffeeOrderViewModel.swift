@@ -5,20 +5,22 @@
 //  Created by 김창현 on 3/30/23.
 //
 
-import Foundation
 import SwiftUI
 
-//class CoffeeOrderListViewModel: ObservableObject {
-//
-//    @Published var orders = [CoffeeOrderViewModel]()
-//
-//    init() {
-//        self.orders = myOrders.map(CoffeeOrderViewModel.init)
-//    }
-//
-//}
+class CoffeeOrderViewModel: ObservableObject {
 
-struct CoffeeOrderViewModel {
+    @Published var orders = [OrderViewModel]()
+//    var incomingOrder = Order()
+    
+    func addOrder(_ newOrder: Order) {
+        let order = OrderViewModel(order: newOrder)
+        self.orders.append(order)
+        print("Total orders: \(self.orders)")
+    }
+
+}
+
+struct OrderViewModel {
     
     let order: Order
     

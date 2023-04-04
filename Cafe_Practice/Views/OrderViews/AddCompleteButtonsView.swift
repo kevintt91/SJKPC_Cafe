@@ -17,7 +17,7 @@ struct AddCompleteButtonsView: View {
     
     var customerName: String
     var boozerNum: String
-    var order: [Order]
+    var order: Order
     
     var body: some View {
         HStack {

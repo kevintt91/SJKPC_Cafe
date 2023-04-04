@@ -13,7 +13,7 @@ struct OrderDetailView: View {
     
     var customerName: String
     var boozerNumber: String
-    var customerOrder: [Order]
+    var customerOrder: Order
     
     var body: some View {
         VStack {
@@ -21,16 +21,21 @@ struct OrderDetailView: View {
             VStack {
                 Text("Customer: " + "\(customerName)")
                 Text("Boozer Number?: " + "\(boozerNumber)")
+                Text("Coffee: " + customerOrder.coffee.rawValue)
+                Text("How many?: " + "\(customerOrder.numberOfCoffee)")
+                Text("iceHot: " + customerOrder.iceHot.rawValue)
+                Text("whipcream: " + customerOrder.whipcream.rawValue)
+                Text("notes: " + customerOrder.notes)
                 
-                ForEach(self.customerOrder, id: \.coffee) { order in
-                    VStack {
-                        Text("Coffee: " + order.coffee.rawValue)
-                        Text("How many?: " + "\(order.numberOfCoffee)")
-                        Text("iceHot: " + order.iceHot.rawValue)
-                        Text("whipcream: " + order.whipcream.rawValue)
-                        Text("notes: " + order.notes)
-                    }
-                }
+//                ForEach(self.customerOrder, id: \.coffe) { order in
+//                    VStack {
+//                        Text("Coffee: " + order.coffee.rawValue)
+//                        Text("How many?: " + "\(order.numberOfCoffee)")
+//                        Text("iceHot: " + order.iceHot.rawValue)
+//                        Text("whipcream: " + order.whipcream.rawValue)
+//                        Text("notes: " + order.notes)
+//                    }
+//                }
                 
             }
             Spacer()
@@ -59,7 +64,7 @@ struct OrderDetailView_Previews: PreviewProvider {
         return OrderDetailView(
             customerName: "철수 어린이",
             boozerNumber: "999",
-            customerOrder: [order]
+            customerOrder: order
         )
 //        let viewModel = OrderDetailViewModel(order: order)
 //
