@@ -13,9 +13,10 @@ class CoffeeOrderViewModel: ObservableObject {
 //    var incomingOrder = Order()
     
     func addOrder(_ newOrder: Order) {
+        print("newOrder: \(newOrder)")
         let order = OrderViewModel(order: newOrder)
+        print("order: \(order)")
         self.orders.append(order)
-        print("Total orders: \(self.orders)")
     }
 
 }
