@@ -9,8 +9,6 @@ import SwiftUI
 
 struct OrderDetailView: View {
     
-//    @ObservedObject var orderDetailVM: CoffeeOrderViewModel
-    
     var customerName: String
     var boozerNumber: String
     var customerOrder: Order
@@ -22,11 +20,6 @@ struct OrderDetailView: View {
             VStack {
                 Text("Customer: " + "\(customerName)")
                 Text("Boozer Number?: " + "\(boozerNumber)")
-//                Text("Coffee: " + customerOrder.coffee.rawValue)
-//                Text("How many?: " + "\(customerOrder.numberOfCoffee)")
-//                Text("iceHot: " + customerOrder.iceHot.rawValue)
-//                Text("whipcream: " + customerOrder.whipcream.rawValue)
-//                Text("notes: " + customerOrder.notes)
                 
                 ForEach(self.testingOrderVM.orders, id: \.coffeeName) { order in
                     VStack {
@@ -40,15 +33,6 @@ struct OrderDetailView: View {
                 
             }
             Spacer()
-//            ForEach(orderDetailVM.coffeeOrders, id:\.coffeeName) { order in
-//                VStack {
-//                    Text(order.coffeeName)
-//                    Text("Number of Coffees: \(order.numberOfCoffee)")
-//                    Text(order.iceHot.rawValue)
-//                    Text(order.whipcream)
-//                    Text(order.notes)
-//                }
-//            }
         }
         .onAppear {
             self.testingOrderVM.addOrder(customerOrder)

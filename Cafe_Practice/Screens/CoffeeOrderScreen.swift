@@ -42,23 +42,34 @@ struct CoffeeOrderScreen: View {
                 
                 NotesView(notes: self.$notes)
                 
-                AddCompleteButtonsView(
-                    customerName: self.customerName,
-                    boozerNum: self.boozerNum,
-                    order: Order(
-                        coffee: coffeeSelction,
-                        numberOfCoffee: numCoffee,
-                        iceHot: iceSelction,
-                        whipcream: whipSelction,
-                        notes: notes
+                HStack {
+                    ClearButtonView(
+                        iceSelction: self.$iceSelction,
+                        coffeeSelction: self.$coffeeSelction,
+                        whipSelction: self.$whipSelction,
+                        numCoffee: self.$numCoffee,
+                        notes: self.$notes
                     )
-                )
+                    
+                    AddCompleteButtonsView(
+                        customerName: self.customerName,
+                        boozerNum: self.boozerNum,
+                        order: Order(
+                            coffee: coffeeSelction,
+                            numberOfCoffee: numCoffee,
+                            iceHot: iceSelction,
+                            whipcream: whipSelction,
+                            notes: notes
+                        )
+                    )
+                }
+                
                 .navigationTitle("Order")
                 
             }
             .padding()
             
-        }// NavigationView
+        }
     }
 }
 
@@ -67,6 +78,3 @@ struct CoffeeOrderScreen_Previews: PreviewProvider {
         CoffeeOrderScreen()
     }
 }
-
-// 첫 오더 뷰에는 손님이름, 부저번호만 입력하고 커피들은 따로 받아야할 듯!?
-//  -> 일단은 손님이름, 부저번호가 같으면 한 오더로 처리해서 하는 방향으로 해보자

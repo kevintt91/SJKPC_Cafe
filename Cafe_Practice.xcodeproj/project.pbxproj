@@ -22,6 +22,7 @@
 		C689A0EF29D6B6910077D28E /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689A0EE29D6B6910077D28E /* Customer.swift */; };
 		C689A0F429D756150077D28E /* CountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689A0F329D756150077D28E /* CountingView.swift */; };
 		C689A0F629D787980077D28E /* OrderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689A0F529D787980077D28E /* OrderDetailViewModel.swift */; };
+		C6C011B329DBAFCE00BC3A91 /* ClearButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C011B229DBAFCE00BC3A91 /* ClearButtonView.swift */; };
 		C6FFF20F29D38C4900C93732 /* Cafe_PracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FFF20E29D38C4900C93732 /* Cafe_PracticeApp.swift */; };
 		C6FFF21329D38C4B00C93732 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6FFF21229D38C4B00C93732 /* Assets.xcassets */; };
 		C6FFF21629D38C4B00C93732 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6FFF21529D38C4B00C93732 /* Preview Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		C689A0EE29D6B6910077D28E /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		C689A0F329D756150077D28E /* CountingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingView.swift; sourceTree = "<group>"; };
 		C689A0F529D787980077D28E /* OrderDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewModel.swift; sourceTree = "<group>"; };
+		C6C011B229DBAFCE00BC3A91 /* ClearButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButtonView.swift; sourceTree = "<group>"; };
 		C6FFF20B29D38C4900C93732 /* Cafe_Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cafe_Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6FFF20E29D38C4900C93732 /* Cafe_PracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe_PracticeApp.swift; sourceTree = "<group>"; };
 		C6FFF21229D38C4B00C93732 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				C689A0DA29D6573B0077D28E /* TotalNumOfCoffeeView.swift */,
 				C689A0DC29D657630077D28E /* NotesView.swift */,
 				C689A0DE29D657B60077D28E /* AddCompleteButtonsView.swift */,
+				C6C011B229DBAFCE00BC3A91 /* ClearButtonView.swift */,
 			);
 			path = OrderViews;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6C011B329DBAFCE00BC3A91 /* ClearButtonView.swift in Sources */,
 				C689A0DD29D657630077D28E /* NotesView.swift in Sources */,
 				C689A0D929D656D30077D28E /* WhipPickerView.swift in Sources */,
 				C689A0EF29D6B6910077D28E /* Customer.swift in Sources */,
