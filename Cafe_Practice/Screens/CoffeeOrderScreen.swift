@@ -26,48 +26,50 @@ struct CoffeeOrderScreen: View {
     var body: some View {
         NavigationView {
             
-            VStack {
+            ScrollView {
                 VStack {
-                    CustomerNameView(customerName: self.$customerName)
-                    BoozerNumView(boozerNum: self.$boozerNum)
-                }
+                    VStack {
+                        CustomerNameView(customerName: self.$customerName)
+                        BoozerNumView(boozerNum: self.$boozerNum)
+                    }
 
-                IcePickerView(iceSelction: self.$iceSelction)
-                
-                CoffeeListView(coffeeSelection: self.$coffeeSelction)
-                
-                WhipPickerView(whipSelction: self.$whipSelction)
-                
-                TotalNumOfCoffeeView(numCoffee: self.$numCoffee)
-                
-                NotesView(notes: self.$notes)
-                
-                HStack {
-                    ClearButtonView(
-                        iceSelction: self.$iceSelction,
-                        coffeeSelction: self.$coffeeSelction,
-                        whipSelction: self.$whipSelction,
-                        numCoffee: self.$numCoffee,
-                        notes: self.$notes
-                    )
+                    IcePickerView(iceSelction: self.$iceSelction)
                     
-                    AddCompleteButtonsView(
-                        customerName: self.customerName,
-                        boozerNum: self.boozerNum,
-                        order: Order(
-                            coffee: coffeeSelction,
-                            numberOfCoffee: numCoffee,
-                            iceHot: iceSelction,
-                            whipcream: whipSelction,
-                            notes: notes
+                    CoffeeListView(coffeeSelection: self.$coffeeSelction)
+                    
+                    WhipPickerView(whipSelction: self.$whipSelction)
+                    
+                    TotalNumOfCoffeeView(numCoffee: self.$numCoffee)
+                    
+                    NotesView(notes: self.$notes)
+                    
+                    HStack {
+                        ClearButtonView(
+                            iceSelction: self.$iceSelction,
+                            coffeeSelction: self.$coffeeSelction,
+                            whipSelction: self.$whipSelction,
+                            numCoffee: self.$numCoffee,
+                            notes: self.$notes
                         )
-                    )
+                        
+                        AddCompleteButtonsView(
+                            customerName: self.customerName,
+                            boozerNum: self.boozerNum,
+                            order: Order(
+                                coffee: coffeeSelction,
+                                numberOfCoffee: numCoffee,
+                                iceHot: iceSelction,
+                                whipcream: whipSelction,
+                                notes: notes
+                            )
+                        )
+                    }
+                    
+                    .navigationTitle("Order")
+                    
                 }
-                
-                .navigationTitle("Order")
-                
+                .padding()
             }
-            .padding()
             
         }
     }
