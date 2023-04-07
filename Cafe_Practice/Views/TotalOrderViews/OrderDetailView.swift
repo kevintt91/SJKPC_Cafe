@@ -8,40 +8,29 @@
 import SwiftUI
 
 struct OrderDetailView: View {
-    
+
+    @ObservedObject var coffeeOrderVM = CoffeeOrderViewModel()
     var customerName: String
     var boozerNumber: String
     var customerOrder: Order
-    @ObservedObject var testingOrderVM = CoffeeOrderViewModel()
     
     var body: some View {
-        VStack {
-            Text("Total Order Views")
-            VStack {
-                Text("Customer: " + "\(customerName)")
-                Text("Boozer Number?: " + "\(boozerNumber)")
-                
-                ForEach(self.testingOrderVM.orders, id: \.coffeeName) { order in
-                    VStack {
-                        Text("Coffee: " + order.coffeeName)
-                        Text("How many?: " + "\(order.numberOfCoffee)")
-                        Text("iceHot: " + order.iceHot.rawValue)
-                        Text("whipcream: " + order.whipcream)
-                        Text("notes: " + order.notes)
-                    }
-                }
-                
+        
+        ZStack {
+            List(coffeeOrderVM.orders, id: \.coffee) { order in
+                TotalOrderCell(order: order)
             }
-            Spacer()
         }
         .onAppear {
-            self.testingOrderVM.addOrder(customerOrder)
+            self.coffeeOrderVM.addOrder(customerOrder)
         }
+        
     }
 }
 
 struct OrderDetailView_Previews: PreviewProvider {
     static var previews: some View {
+        let vm = CoffeeOrderViewModel()
         let order = Order(
             coffee: .am,
             numberOfCoffee: 1,
@@ -50,12 +39,10 @@ struct OrderDetailView_Previews: PreviewProvider {
             notes: "Nothing"
         )
         return OrderDetailView(
+            coffeeOrderVM: vm,
             customerName: "철수 어린이",
             boozerNumber: "999",
             customerOrder: order
         )
-//        let viewModel = OrderDetailViewModel(order: order)
-//
-//        return OrderDetailView(orderDetailVM: viewModel)
     }
 }

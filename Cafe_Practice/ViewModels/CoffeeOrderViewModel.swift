@@ -9,14 +9,30 @@ import SwiftUI
 
 class CoffeeOrderViewModel: ObservableObject {
 
-    @Published var orders = [OrderViewModel]()
-//    var incomingOrder = Order()
+    @Published var orders = [Order]()
     
     func addOrder(_ newOrder: Order) {
-        print("newOrder: \(newOrder)")
-        let order = OrderViewModel(order: newOrder)
-        print("order: \(order)")
-        self.orders.append(order)
+        
+        if let sameOrderIndex = orders.firstIndex(where: { order in
+            order.coffee == newOrder.coffee &&
+            order.iceHot == newOrder.iceHot &&
+            order.whipcream == newOrder.whipcream &&
+            order.notes == newOrder.notes
+        }) {
+            orders[sameOrderIndex].numberOfCoffee += newOrder.numberOfCoffee 
+            
+        } else {
+            self.orders.append(newOrder)
+        }
+    }
+    
+    func totalOrder() {
+        print("order: \(orders)")
+        print("Number of orders: \(orders.count)")
+    }
+    
+    func removeOrder(_ deleteOrder: Order) {
+        
     }
 
 }

@@ -17,11 +17,7 @@ struct CoffeeOrderScreen: View {
     @State private var numCoffee: Int = 0
     @State private var notes: String = ""
     
-    @ObservedObject private var coffeeOrderVM: CoffeeOrderViewModel
-    
-    init() {
-        self.coffeeOrderVM = CoffeeOrderViewModel()
-    }
+    @StateObject var coffeeOrderVM: CoffeeOrderViewModel
     
     var body: some View {
         NavigationView {
@@ -52,17 +48,31 @@ struct CoffeeOrderScreen: View {
                             notes: self.$notes
                         )
                         
-                        AddCompleteButtonsView(
-                            customerName: self.customerName,
-                            boozerNum: self.boozerNum,
-                            order: Order(
-                                coffee: coffeeSelction,
-                                numberOfCoffee: numCoffee,
-                                iceHot: iceSelction,
-                                whipcream: whipSelction,
-                                notes: notes
-                            )
-                        )
+                        HStack {
+                            NavigationLink(
+                                destination: OrderDetailView(
+                                    coffeeOrderVM: coffeeOrderVM,
+                                    customerName: self.customerName,
+                                    boozerNumber: self.boozerNum,
+                                    customerOrder: Order(
+                                        coffee: coffeeSelction,
+                                        numberOfCoffee: numCoffee,
+                                        iceHot: iceSelction,
+                                        whipcream: whipSelction,
+                                        notes: notes
+                                    )
+                                )
+                            ){
+                                Text("Add")
+                                    .font(.system(size: 22))
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
+                            .padding(20)
+                            .frame(width: (Constants.screenSize.width - 40)/2, height: 80)
+                            .background(Color(#colorLiteral(red: 0.1695919633, green: 0.164103806, blue: 0.3997933269, alpha: 1)))
+                            
+                        }
                     }
                     
                     .navigationTitle("Order")
@@ -77,6 +87,7 @@ struct CoffeeOrderScreen: View {
 
 struct CoffeeOrderScreen_Previews: PreviewProvider {
     static var previews: some View {
-        CoffeeOrderScreen()
+        CoffeeOrderScreen(
+            coffeeOrderVM: CoffeeOrderViewModel())
     }
 }

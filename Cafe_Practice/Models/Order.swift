@@ -10,12 +10,12 @@ import Foundation
 enum Coffees: String, CaseIterable {
     case am = "Americano"
     case lt = "Latte"
-    case vl = "Vanilla\nLatte"
-    case cm = "Caramel\nMachiato"
+    case vl = "Vanilla Latte"
+    case cm = "Caramel Machiato"
     case cp = "Cappucino"
     case expresso = "Espresso"
-    case sch = "Small\nChocolate"
-    case lch = "Large\nChocolate"
+    case sch = "Small Chocolate"
+    case lch = "Large Chocolate"
     case tea = "Tea"
 }
 
@@ -29,10 +29,12 @@ enum Whipcream: String, CaseIterable {
     case NoWhip = "No Whip cream"
 }
 
-struct Order {
-    let coffee: Coffees
-    let numberOfCoffee: Int
-    let iceHot: IceHot
-    let whipcream: Whipcream
-    let notes: String
+struct Order: Identifiable {
+    var id = UUID()
+    
+    var coffee: Coffees
+    var numberOfCoffee: Int
+    var iceHot: IceHot
+    var whipcream: Whipcream
+    var notes: String
 }

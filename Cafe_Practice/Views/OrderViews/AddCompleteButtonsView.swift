@@ -15,18 +15,10 @@ struct AddCompleteButtonsView: View {
     
     var body: some View {
         HStack {
-            NavigationLink(
-                destination: OrderDetailView(
-                    customerName: self.customerName,
-                    boozerNumber: self.boozerNum,
-                    customerOrder: order
-                )
-            ){
-                Text("Add")
-                    .font(.system(size: 22))
-                    .foregroundColor(.white)
-                    .fontWeight(.bold)
-            }.padding(20)
+            Button("Add", action: {
+                
+            })
+                .padding(20)
                 .frame(width: (Constants.screenSize.width - 40)/2, height: 80)
                 .background(Color(#colorLiteral(red: 0.1695919633, green: 0.164103806, blue: 0.3997933269, alpha: 1)))
                 .cornerRadius(16)

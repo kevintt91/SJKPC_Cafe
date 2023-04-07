@@ -11,7 +11,7 @@ import SwiftUI
 struct Cafe_PracticeApp: App {
     var body: some Scene {
         WindowGroup {
-            CoffeeOrderScreen()
+            CoffeeOrderScreen(coffeeOrderVM: CoffeeOrderViewModel())
 //            CountingView()
         }
     }
