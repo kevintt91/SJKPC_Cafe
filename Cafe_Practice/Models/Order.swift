@@ -16,6 +16,8 @@ enum Coffees: String, CaseIterable {
     case expresso = "Espresso"
     case sch = "Small Chocolate"
     case lch = "Large Chocolate"
+    case schw = "Small Chocolate w/ Whip Cream"
+    case lchw = "Large Chocolate w/ Whip Cream"
     case tea = "Tea"
 }
 
@@ -24,17 +26,11 @@ enum IceHot: String, CaseIterable {
     case hot = "Hot"
 }
 
-enum Whipcream: String, CaseIterable {
-    case YesWhip = "Yes Whip cream"
-    case NoWhip = "No Whip cream"
-}
-
 struct Order: Identifiable {
     var id = UUID()
     
     var coffee: Coffees
     var numberOfCoffee: Int
     var iceHot: IceHot
-    var whipcream: Whipcream
     var notes: String
 }

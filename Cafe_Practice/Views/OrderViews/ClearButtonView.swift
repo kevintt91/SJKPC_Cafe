@@ -11,7 +11,6 @@ struct ClearButtonView: View {
     
     @Binding var iceSelction: IceHot
     @Binding var coffeeSelction: Coffees
-    @Binding var whipSelction: Whipcream
     @Binding var numCoffee: Int
     @Binding var notes: String
     
@@ -19,7 +18,6 @@ struct ClearButtonView: View {
         Button("Clear", action: {
             self.iceSelction = .iced
             self.coffeeSelction = .am
-            self.whipSelction = .NoWhip
             self.numCoffee = 0
             self.notes = ""
         })

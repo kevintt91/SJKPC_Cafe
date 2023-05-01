@@ -30,11 +30,9 @@ struct CoffeeOrderScreen: View {
     @State private var boozerNum: String = ""
     @State private var iceSelction: IceHot = .hot
     @State private var coffeeSelction: Coffees = .am
-    @State private var whipSelction: Whipcream = .NoWhip
     @State private var numCoffee: Int = 0
     @State private var notes: String = ""
     
-    @State private var chocoSelected: Bool = false
     @State private var showAlert = false
     @State private var orderPlaced = false
     @State private var alertType: AlertType?
@@ -51,16 +49,11 @@ struct CoffeeOrderScreen: View {
                     VStack {
                         CustomerNameView(customerName: self.$customerName)
                         BoozerNumView(boozerNum: self.$boozerNum)
-//                            .padding([.trailing], 100)
                     }.dismissKeyboardOnTap()
 
                     IcePickerView(iceSelction: self.$iceSelction)
                     
-                    CoffeeListView(coffeeSelection: self.$coffeeSelction, chocoSelected: self.$chocoSelected)
-                    
-                    if (self.chocoSelected) {
-                        WhipPickerView(whipSelction: self.$whipSelction)
-                    }
+                    CoffeeListView(coffeeSelection: self.$coffeeSelction)
                     
                     TotalNumOfCoffeeView(numCoffee: self.$numCoffee)
                     
@@ -156,7 +149,6 @@ struct CoffeeOrderScreen: View {
                             self.coffeeSelction = .am
                             self.numCoffee = 0
                             self.iceSelction = .hot
-                            self.whipSelction = .NoWhip
                             self.notes = ""
                             
                             coffeeOrderVM.clearOrder()

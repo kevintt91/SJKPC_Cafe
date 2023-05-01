@@ -10,35 +10,36 @@ import SwiftUI
 struct CoffeeListView: View {
     
     @Binding var coffeeSelection: Coffees
-    @Binding var chocoSelected: Bool
     let columns = [GridItem(spacing: 20), GridItem(spacing: 20), GridItem(spacing: 20)]
     
     var body: some View {
-        
         LazyVGrid(columns: columns) {
             ForEach(Coffees.allCases, id: \.self) { coffee in
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(coffeeSelection == coffee ? Color.blue : Color.black)
-                        .frame(width: 100, height: 70)
-                        .overlay(
-                            Button(coffee.rawValue, action: {
-                                coffeeSelection = coffee
-                                self.chocoSelected = coffeeSelection == .sch || coffeeSelection == .lch
-                            })
+                    Button(action: {
+                        coffeeSelection = coffee
+                    }) {
+                        Text(coffee.rawValue)
                             .foregroundColor(.white)
-                        )
+                            .frame(width: 120, height: 75)
+                            .multilineTextAlignment(.center)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(coffeeSelection == coffee ? Color.blue : Color.black)
+                                    .frame(width: 120, height: 75)
+                                )
+                    }
+                    .buttonStyle(PlainButtonStyle())
+
                 } // ZStack
             } // ForEach
         } // LazyVGrid
         .offset(y: -50)
     }
-    
 }
-
 
 struct CoffeeListView_Previews: PreviewProvider {
     static var previews: some View {
-        CoffeeListView(coffeeSelection: .constant(.am), chocoSelected: .constant(false))
+        CoffeeListView(coffeeSelection: .constant(.am))
     }
 }

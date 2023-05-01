@@ -15,7 +15,6 @@ class CoffeeOrderViewModel: ObservableObject {
         if let sameOrderIndex = orders.firstIndex(where: { order in
             order.coffee == newOrder.coffee &&
             order.iceHot == newOrder.iceHot &&
-            order.whipcream == newOrder.whipcream &&
             order.notes == newOrder.notes
         }) {
             orders[sameOrderIndex].numberOfCoffee += newOrder.numberOfCoffee 
@@ -58,10 +57,6 @@ struct OrderViewModel {
     
     var iceHot: IceHot {
         order.iceHot
-    }
-
-    var whipcream: String {
-        order.whipcream.rawValue
     }
     
     var notes: String {

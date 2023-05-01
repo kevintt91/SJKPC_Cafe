@@ -24,11 +24,7 @@ struct TotalOrderCell: View {
                 Text(order.iceHot.rawValue)
             }
             
-            VStack(alignment: .leading) {
-                Text(order.whipcream.rawValue)
-                    .foregroundColor(.secondary)
-                    .italic()
-                
+            VStack(alignment: .leading) {                
                 Text(order.notes)
                     .foregroundColor(.secondary)
                     .italic()
@@ -70,7 +66,7 @@ struct TotalOrderCell: View {
 struct TotalOrderCell_Previews: PreviewProvider {
     static var previews: some View {
         TotalOrderCell(order:
-            Order(coffee: .cm, numberOfCoffee: 1, iceHot: .hot, whipcream: .NoWhip, notes: "No Milk!")
+            Order(coffee: .cm, numberOfCoffee: 1, iceHot: .hot, notes: "No Milk!")
         )
     }
 }
