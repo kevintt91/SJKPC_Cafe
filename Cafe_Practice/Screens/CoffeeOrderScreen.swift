@@ -107,7 +107,7 @@ struct CoffeeOrderScreen: View {
                                                 coffee: coffeeSelction,
                                                 numberOfCoffee: numCoffee,
                                                 iceHot: iceSelction,
-                                                whipcream: whipSelction,
+//                                                whipcream: whipSelction,
                                                 notes: notes
                                             )
                                             coffeeOrderVM.addOrder(order)
