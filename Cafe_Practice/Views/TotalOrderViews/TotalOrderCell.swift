@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TotalOrderCell: View {
     
+    @ObservedObject var coffeeOrderVM = CoffeeOrderViewModel()
     let order: Order
     
     var body: some View {
@@ -36,24 +37,29 @@ struct TotalOrderCell: View {
             
             HStack {
                 Button("\(order.numberOfCoffee)", action: {
-                    print("Remove Button Clicked")
+                    print("number Of Coffee")
                 })
-                .foregroundColor(.black)
-                .padding(10)
-                .frame(width: 50, height: 40)
+                .buttonStyle(BorderlessButtonStyle())
+                .padding([.leading, .trailing], 20)
+                .padding([.top, .bottom], 10)
                 .background(.teal)
+                .foregroundColor(.white)
                 .cornerRadius(20)
+                .shadow(radius: 5)
                 
                 Spacer()
                 
                 Button("Remove", action: {
-                    print("Remove Button Clicked")
+                    print("Deleting this Order: \(order)")
+                    coffeeOrderVM.removeOrder(self.order)
                 })
-                .foregroundColor(.black)
-                .padding(10)
-                .frame(width: 100, height: 40)
-                .background(.teal)
-                .cornerRadius(20)
+                .buttonStyle(BorderlessButtonStyle())
+                .padding([.leading, .trailing], 20)
+                .padding([.top, .bottom], 10)
+                .background(Color.teal)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                .shadow(radius: 5)
             }
         }
         .padding(40)

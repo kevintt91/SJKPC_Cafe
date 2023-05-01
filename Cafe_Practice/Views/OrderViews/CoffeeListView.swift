@@ -10,6 +10,7 @@ import SwiftUI
 struct CoffeeListView: View {
     
     @Binding var coffeeSelection: Coffees
+    @Binding var chocoSelected: Bool
     let columns = [GridItem(spacing: 20), GridItem(spacing: 20), GridItem(spacing: 20)]
     
     var body: some View {
@@ -23,6 +24,7 @@ struct CoffeeListView: View {
                         .overlay(
                             Button(coffee.rawValue, action: {
                                 coffeeSelection = coffee
+                                self.chocoSelected = coffeeSelection == .sch || coffeeSelection == .lch
                             })
                             .foregroundColor(.white)
                         )
@@ -37,6 +39,6 @@ struct CoffeeListView: View {
 
 struct CoffeeListView_Previews: PreviewProvider {
     static var previews: some View {
-        CoffeeListView(coffeeSelection: .constant(.am))
+        CoffeeListView(coffeeSelection: .constant(.am), chocoSelected: .constant(false))
     }
 }

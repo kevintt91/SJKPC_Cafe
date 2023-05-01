@@ -12,18 +12,40 @@ struct OrderDetailView: View {
     @ObservedObject var coffeeOrderVM = CoffeeOrderViewModel()
     var customerName: String
     var boozerNumber: String
-    var customerOrder: Order
+//    var customerOrder: Order
     
     var body: some View {
         
-        ZStack {
+        VStack {
+            HStack {
+                Text("Boozer #" + boozerNumber)
+                    .foregroundColor(.secondary)
+                    .font(.title3)
+            }
+            
             List(coffeeOrderVM.orders, id: \.coffee) { order in
                 TotalOrderCell(order: order)
+                    .contentShape(Rectangle())
+                    .onTapGesture { }
             }
+            
+            Spacer()
+            
+            Button("Complete Order", action: {})
+                .padding(20)
+                .frame(width: Constants.screenSize.width - 40, height: 80)
+                .background(Color(#colorLiteral(red: 0.1695919633, green: 0.164103806, blue: 0.3997933269, alpha: 1)))
+                .cornerRadius(16)
+                .foregroundColor(.white)
+                .fontWeight(.bold)
+                .font(.system(size: 22))
         }
-        .onAppear {
-            self.coffeeOrderVM.addOrder(customerOrder)
-        }
+        .navigationTitle("Customer: " + customerName)
+//        .onAppear {
+//            self.coffeeOrderVM.addOrder(
+//                Order(coffee: .am, numberOfCoffee: 1, iceHot: .hot, whipcream: .NoWhip, notes: "")
+//            )
+//        }
         
     }
 }
@@ -31,18 +53,10 @@ struct OrderDetailView: View {
 struct OrderDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let vm = CoffeeOrderViewModel()
-        let order = Order(
-            coffee: .am,
-            numberOfCoffee: 1,
-            iceHot: .iced,
-            whipcream: .NoWhip,
-            notes: "Nothing"
-        )
         return OrderDetailView(
             coffeeOrderVM: vm,
             customerName: "철수 어린이",
-            boozerNumber: "999",
-            customerOrder: order
+            boozerNumber: "999"
         )
     }
 }

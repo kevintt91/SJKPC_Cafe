@@ -32,9 +32,3 @@ struct ClearButtonView: View {
             .cornerRadius(16)
     }
 }
-
-//struct ClearButtonView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ClearButtonView(boozerNum: .constant("Testing booz num"))
-//    }
-//}

@@ -23,8 +23,6 @@ struct CustomerNameView: View {
         }
         .frame(width: Constants.screenSize.width/1.1, height: Constants.screenSize.height/19)
         .offset(x: -8, y: -10)
-        
-        let _ = print("From CustomerNameView, The name: \($customerName)")
     }
     
 }

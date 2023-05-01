@@ -16,8 +16,4 @@ class OrderDetailViewModel: ObservableObject {
         self.order = order
     }
     
-//    var coffeeOrders: [CoffeeOrderViewModel] {
-//        let coffeeOrder = CoffeeOrderViewModel(order: order)
-//        return [coffeeOrder]
-//    }
 }
