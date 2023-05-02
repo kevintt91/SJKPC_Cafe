@@ -12,7 +12,6 @@ struct IcePickerView: View {
     @Binding var iceSelction: IceHot
     
     var body: some View {
-        
         Picker("What's here", selection: self.$iceSelction) {
             ForEach(IceHot.allCases, id: \.self) { option in
                 Text(option.rawValue)
@@ -21,7 +20,6 @@ struct IcePickerView: View {
         .pickerStyle(SegmentedPickerStyle())
         .padding()
         .offset(y: -40)
-        
     }
 }
 

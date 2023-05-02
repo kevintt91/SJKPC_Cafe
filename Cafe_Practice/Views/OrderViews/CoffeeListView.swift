@@ -32,6 +32,9 @@ struct CoffeeListView: View {
                     .buttonStyle(PlainButtonStyle())
 
                 } // ZStack
+                .modifier(DismissKeyboardWithAction(action: {
+                    coffeeSelection = coffee
+                }))
             } // ForEach
         } // LazyVGrid
         .offset(y: -50)

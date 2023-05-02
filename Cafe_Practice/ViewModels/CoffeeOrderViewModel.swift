@@ -36,10 +36,6 @@ class CoffeeOrderViewModel: ObservableObject {
             self.orders.remove(at: index)
         }
     }
-    
-    func clearOrder() {
-        self.orders.removeAll()
-    }
 
 }
 
