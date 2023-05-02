@@ -24,64 +24,58 @@ struct CoffeeOrderScreen: View {
     @State private var showSheet = false
     var body: some View {
         NavigationView {
-            ZStack {
-                Color.clear
-                    .edgesIgnoringSafeArea(.all)
-                    .dismissKeyboardOnTap()
-                
-                ScrollView {
+            ScrollView {
+                VStack {
                     VStack {
-                        VStack {
-                            CustomerNameView(customerName: self.$customerName)
-                            BoozerNumView(boozerNum: self.$boozerNum)
-                        }
-                        IcePickerView(iceSelction: self.$iceSelction)
-                        CoffeeListView(coffeeSelection: self.$coffeeSelction)
-                        TotalNumOfCoffeeView(numCoffee: self.$numCoffee)
-                        NotesView(notes: self.$notes)
-                        
-                        HStack {
-                            NextView(
-                                customerName: self.customerName,
-                                boozerNum: self.boozerNum,
-                                coffeeOrderVM: coffeeOrderVM
-                            )
-                            
-                            AddOrderView(
-                                customerName: self.customerName,
-                                numCoffee: self.numCoffee,
-                                boozerNum: self.boozerNum,
-                                theOrder: Order(
-                                    coffee: coffeeSelction,
-                                    numberOfCoffee: numCoffee,
-                                    iceHot: iceSelction,
-                                    notes: notes
-                                ),
-                                showNotification: self.$showNotification,
-                                coffeeOrderVM: coffeeOrderVM
-                            )
-                        } // HStack with two buttons
-                        
+                        CustomerNameView(customerName: self.$customerName)
+                        BoozerNumView(boozerNum: self.$boozerNum)
                     }
-                    .padding()
-                }
-                .navigationTitle("Order")
-                .toolbar {
-                    Button {
-                        self.customerName = ""
-                        self.boozerNum = ""
-                        self.coffeeSelction = .am
-                        self.numCoffee = 0
-                        self.iceSelction = .hot
-                        self.notes = ""
+                    IcePickerView(iceSelction: self.$iceSelction)
+                    CoffeeListView(coffeeSelection: self.$coffeeSelction)
+                    TotalNumOfCoffeeView(numCoffee: self.$numCoffee)
+                    NotesView(notes: self.$notes)
+                    
+                    HStack {
+                        NextView(
+                            customerName: self.customerName,
+                            boozerNum: self.boozerNum,
+                            coffeeOrderVM: coffeeOrderVM
+                        )
                         
-                    } label: {
-                        Image(systemName: "eraser")
-                            .imageScale(.large)
-                            .foregroundColor(.accentColor)
-                    }
+                        AddOrderView(
+                            customerName: self.customerName,
+                            numCoffee: self.numCoffee,
+                            boozerNum: self.boozerNum,
+                            theOrder: Order(
+                                coffee: coffeeSelction,
+                                numberOfCoffee: numCoffee,
+                                iceHot: iceSelction,
+                                notes: notes
+                            ),
+                            showNotification: self.$showNotification,
+                            coffeeOrderVM: coffeeOrderVM
+                        )
+                    } // HStack with two buttons
+                    
                 }
+                .padding()
             } // ScrollView
+            .navigationTitle("Order")
+            .toolbar {
+                Button {
+                    self.customerName = ""
+                    self.boozerNum = ""
+                    self.coffeeSelction = .am
+                    self.numCoffee = 0
+                    self.iceSelction = .hot
+                    self.notes = ""
+                    
+                } label: {
+                    Image(systemName: "eraser")
+                        .imageScale(.large)
+                        .foregroundColor(.accentColor)
+                }
+            }
         } // NavigationView
         .overlay(
             Group{

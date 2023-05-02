@@ -12,16 +12,17 @@ class CoffeeOrderViewModel: ObservableObject {
     @Published var orders = [Order]()
     
     func addOrder(_ newOrder: Order) {
-        if let sameOrderIndex = orders.firstIndex(where: { order in
+        if let sameOrderIndex = self.orders.firstIndex(where: { order in
             order.coffee == newOrder.coffee &&
             order.iceHot == newOrder.iceHot &&
             order.notes == newOrder.notes
         }) {
-            orders[sameOrderIndex].numberOfCoffee += newOrder.numberOfCoffee 
+            self.orders[sameOrderIndex].numberOfCoffee += newOrder.numberOfCoffee
             
         } else {
             self.orders.append(newOrder)
         }
+        totalOrder()
     }
     
     func totalOrder() {
@@ -31,6 +32,8 @@ class CoffeeOrderViewModel: ObservableObject {
     
     func removeOrder(_ deleteOrder: Order) {
         print("func removeOrder")
+        print("deleteOrder.id: \(deleteOrder.id)")
+        print(self.orders)
         if let index = self.orders.firstIndex(where: { $0.id == deleteOrder.id }) {
             print("Removing!")
             self.orders.remove(at: index)

@@ -24,11 +24,7 @@ enum AlertType: Identifiable {
     }
 }
 
-struct AddOrderView: View {
-    
-//    @Binding var customerName: String
-//    @Binding var numCoffee: Int
-//    @Binding var boozerNum: String
+struct AddOrderView: View {    
     var customerName: String
     var numCoffee: Int
     var boozerNum: String
@@ -119,9 +115,3 @@ struct AddOrderView: View {
         })
     }
 }
-
-//struct AddOrderView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddOrderView()
-//    }
-//}

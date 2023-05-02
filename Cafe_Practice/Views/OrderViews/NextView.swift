@@ -35,9 +35,3 @@ struct NextView: View {
         }
     }
 }
-
-//struct NextView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NextView()
-//    }
-//}

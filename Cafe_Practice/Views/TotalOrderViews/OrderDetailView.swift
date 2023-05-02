@@ -12,7 +12,6 @@ struct OrderDetailView: View {
     @ObservedObject var coffeeOrderVM = CoffeeOrderViewModel()
     var customerName: String
     var boozerNumber: String
-//    var customerOrder: Order
     
     var body: some View {
         
@@ -24,29 +23,31 @@ struct OrderDetailView: View {
             }
             
             List(coffeeOrderVM.orders, id: \.coffee) { order in
-                TotalOrderCell(order: order)
+                TotalOrderCell(coffeeOrderVM: coffeeOrderVM, order: order)
                     .contentShape(Rectangle())
                     .onTapGesture { }
             }
             
             Spacer()
             
-            Button("Complete Order", action: {})
-                .padding(20)
-                .frame(width: Constants.screenSize.width - 40, height: 80)
-                .background(Color(#colorLiteral(red: 0.1695919633, green: 0.164103806, blue: 0.3997933269, alpha: 1)))
-                .cornerRadius(16)
-                .foregroundColor(.white)
-                .fontWeight(.bold)
-                .font(.system(size: 22))
+            Button(action: {
+                
+            }) {
+                Text("Complete Order")
+                    .frame(width: Constants.screenSize.width - 40, height: 80)
+                    .font(.system(size: 22))
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color(#colorLiteral(red: 0.1695919633, green: 0.164103806, blue: 0.3997933269, alpha: 1)))
+                            .frame(width: Constants.screenSize.width - 40, height: 80)
+                    )
+            }
+            .buttonStyle(PlainButtonStyle())
         }
         .navigationTitle("Customer: " + customerName)
-//        .onAppear {
-//            self.coffeeOrderVM.addOrder(
-//                Order(coffee: .am, numberOfCoffee: 1, iceHot: .hot, whipcream: .NoWhip, notes: "")
-//            )
-//        }
-        
     }
 }
 
